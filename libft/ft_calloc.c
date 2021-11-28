@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elisa <elisa@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ejahan <ejahan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:58:57 by ejahan            #+#    #+#             */
-/*   Updated: 2021/11/26 10:36:49 by elisa            ###   ########.fr       */
+/*   Created: 2020/11/21 15:45:21 by elisa             #+#    #+#             */
+/*   Updated: 2021/06/03 15:00:33 by ejahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minitalk.h"
+#include "libft.h"
 
-void	server()
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	pid;
+	unsigned int	i;
+	char			*str;
 
-	pid = getpid();
-	ft_putnbr_fd(pid, 1);
-	while (1)
+	i = 0;
+	str = malloc(sizeof(char) * (size * count));
+	if (!(str))
+		return (NULL);
+	i = 0;
+	while (i < (size * count))
 	{
-		signal(SIGUSR1, recup_sig);
-		signal(SIGUSR2, recup_sig);
+		str[i] = 0;
+		i++;
 	}
-}
-
-int	main(int ac, char **av)
-{
-	server();
-	return (0);
+	return (str);
 }

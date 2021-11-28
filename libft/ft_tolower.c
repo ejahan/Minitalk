@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elisa <elisa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:52:11 by ejahan            #+#    #+#             */
-/*   Updated: 2021/11/26 10:40:57 by elisa            ###   ########.fr       */
+/*   Created: 2020/11/19 17:07:41 by elisa             #+#    #+#             */
+/*   Updated: 2020/11/27 22:55:33 by elisa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
-
-
-
-#endif
+int	ft_tolower(int c)
+{
+	if (c > 64 && c < 91)
+		c = c + 32;
+	return (c);
+}

@@ -12,3 +12,13 @@
 ◦ sleep
 🔶 usleep <3
 🔶 exit <3
+
+
+int kill(pid_t pid, int sig);
+envoie signal au pid
+
+int signal(int sig, void (*func)(int))
+recoie signal + fait fonction 
+
+SIGUSR1 -> 1
+SIGUSR2 -> 0

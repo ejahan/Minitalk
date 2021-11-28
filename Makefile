@@ -31,20 +31,23 @@ CFLAGS	=	-Wall -Wextra -Werror #-g3 #-fsanitize=address
 RM		=	rm -rf
 
 .c.o:
+			$(MAKE) -C libft
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
 
 all:		${NAME_SERVER} ${NAME_CLIENT}
 
 ${NAME_SERVER}:	${OBJS_SERVER}
-			$(CC) ${CFLAGS} $(OBJS_SERVER) -I $(INCS) -o $(NAME_SERVER)
+			$(CC) ${CFLAGS} $(OBJS_SERVER) -I $(INCS) -o $(NAME_SERVER) libft/libft.a
 
 ${NAME_CLIENT}:	${OBJS_CLIENT}
-			$(CC) ${CFLAGS} $(OBJS_CLIENT) -I $(INCS) -o $(NAME_CLIENT)
+			$(CC) ${CFLAGS} $(OBJS_CLIENT) -I $(INCS) -o $(NAME_CLIENT) libft/libft.a
 
 clean:
+			$(MAKE) -C libft clean
 			${RM} ${OBJS_SERVER} ${OBJS_CLIENT}
 
 fclean:		clean
+			$(MAKE) -C libft fclean
 			${RM} ${NAME_SERVER} ${NAME_CLIENT}
 
 re:			fclean all

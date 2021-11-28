@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elisa <elisa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:52:11 by ejahan            #+#    #+#             */
-/*   Updated: 2021/11/26 10:40:57 by elisa            ###   ########.fr       */
+/*   Created: 2020/11/19 15:20:27 by elisa             #+#    #+#             */
+/*   Updated: 2020/11/27 17:32:12 by elisa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
-
-
-
-#endif
+int	ft_isalnum(int c)
+{
+	if (c >= 48 && c < 58)
+		return (1);
+	else if (c > 64 && c < 91)
+		return (1);
+	else if (c > 96 && c < 123)
+		return (1);
+	else
+		return (0);
+}

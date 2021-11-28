@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elisa <elisa@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ejahan <ejahan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:58:57 by ejahan            #+#    #+#             */
-/*   Updated: 2021/11/26 10:36:49 by elisa            ###   ########.fr       */
+/*   Created: 2020/11/19 16:35:09 by elisa             #+#    #+#             */
+/*   Updated: 2021/06/03 16:24:46 by ejahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minitalk.h"
+#include "libft.h"
 
-void	server()
+char	*ft_strchr(const char *s, int c)
 {
-	int	pid;
+	int		i;
+	char	*str;
 
-	pid = getpid();
-	ft_putnbr_fd(pid, 1);
-	while (1)
+	i = 0;
+	str = (char *)s;
+	if (c == '\0')
+		return (&str[ft_strlen(str)]);
+	while (str[i++] != c)
 	{
-		signal(SIGUSR1, recup_sig);
-		signal(SIGUSR2, recup_sig);
+		if (str[i] == '\0')
+			return (NULL);
 	}
-}
-
-int	main(int ac, char **av)
-{
-	server();
-	return (0);
+	str = &str[i - 1];
+	return (str);
 }

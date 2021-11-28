@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elisa <elisa@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ejahan <ejahan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:58:49 by ejahan            #+#    #+#             */
-/*   Updated: 2021/11/26 10:36:35 by elisa            ###   ########.fr       */
+/*   Created: 2020/11/19 16:37:07 by elisa             #+#    #+#             */
+/*   Updated: 2021/06/03 16:25:18 by ejahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minitalk.h"
+#include "libft.h"
 
-int	client(int pid, char *str)
+char	*ft_strdup(const char *s1)
 {
-	kill(pid, SIGUSR1);
-}
+	int		i;
+	char	*s2;
 
-int	main(int ac, char **av)
-{
-	client(ft_atoi(av[1]), av[2]);
-	return (0);
+	i = 0;
+	while (s1[i])
+		i++;
+	s2 = malloc(sizeof(char) * (i + 1));
+	if (!s2)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }
