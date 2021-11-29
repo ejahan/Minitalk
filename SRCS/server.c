@@ -12,21 +12,28 @@
 
 #include "../minitalk.h"
 
+char	bin_to_char(int	i)
+{
+	char	c;
+
+	return (c);
+}
+
 void	server()
 {
 	int	pid;
 
 	pid = getpid();
 	ft_putnbr_fd(pid, 1);
+	signal(SIGUSR1, recup_sig);
+	// signal(SIGUSR2, recup_sig);
 	while (1)
-	{
-		signal(SIGUSR1, recup_sig);
-		signal(SIGUSR2, recup_sig);
-	}
+		pause();
 }
 
-int	main(int ac, char **av)
+int	main(int ac)
 {
-	server();
+	if (ac == 1)
+		server();
 	return (0);
 }

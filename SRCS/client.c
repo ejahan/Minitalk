@@ -12,13 +12,39 @@
 
 #include "../minitalk.h"
 
+int	to_bin(int c)
+{
+	int	i;
+
+	return (jsp);
+}
+
 int	client(int pid, char *str)
 {
-	kill(pid, SIGUSR1);
+	int	i;
+
+	i = 0;
+	// kill(pid, SIGUSR1);
+	while (str[i])
+	{
+		to_bin(str[i]);
+		usleep(100);
+		i++;
+	}
 }
 
 int	main(int ac, char **av)
 {
-	client(ft_atoi(av[1]), av[2]);
+	if (ac == 3)
+	{
+		while (ft_is_digit(av[1][i]) == 1)
+			i++;
+		if (av[1][i] == '\0')
+			client(ft_atoi(av[1]), av[2]);
+		else
+			write(1, "error : wrong pid\n", 18);
+	}
+	else
+		write(1, "error : wrong number of arguments\n", 34);
 	return (0);
 }
