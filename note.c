@@ -22,3 +22,27 @@ recoie signal + fait fonction
 
 SIGUSR1 -> 1
 SIGUSR2 -> 0
+
+8 signaux a envoyer
+
+8 signaux a recevoir 
+quand 8 signaux ont ete recus et stockes dans str -> convert to ascii
+
+put ascii dans buffer
+
+
+
+
+
+
+
+client  ->  *   prend pid de server (lance avant)
+				et la chaine de caractere a passer
+			*	pour chaque caractere : passe son int en binaire
+				envoie chaque 0 ou 1 un par un 
+			*	sleep(100)
+
+server  ->  *	tourne en boucle (while (1) -> pause())
+			*	quand recoit signal 1 -> recup 1
+			*	quand recoit signal 2 -> recup 2
+			*	tous les 8 -> 

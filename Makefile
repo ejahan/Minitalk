@@ -6,7 +6,7 @@
 #    By: elisa <elisa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/12 12:52:35 by elisa             #+#    #+#              #
-#    Updated: 2021/11/26 10:34:13 by elisa            ###   ########.fr        #
+#    Updated: 2021/11/30 21:34:37 by elisa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ NAME_CLIENT	=	client
 
 INCS	=	minitalk.h
 
-SRCS_SERVER	=	./SRCS/server.c ./SRCS/utils.c
+SRCS_SERVER	=	./SRCS/server.c
 
-SRCS_CLIENT	=	./SRCS/client.c ./SRCS/utils.c
+SRCS_CLIENT	=	./SRCS/client.c
 
 OBJS_SERVER	=	${SRCS_SERVER:.c=.o}
 
