@@ -31,6 +31,7 @@ quand 8 signaux ont ete recus et stockes dans str -> convert to ascii
 put ascii dans buffer
 
 
+http://www.gecif.net/qcm/information/table_de_conversion.pdf
 
 
 
