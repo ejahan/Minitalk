@@ -34,9 +34,6 @@ put ascii dans buffer
 http://www.gecif.net/qcm/information/table_de_conversion.pdf
 
 
-
-
-
 client  ->  *   prend pid de server (lance avant)
 				et la chaine de caractere a passer
 			*	pour chaque caractere : passe son int en binaire

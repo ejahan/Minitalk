@@ -12,10 +12,52 @@
 
 #include "../minitalk.h"
 
+// void	put_in_buf(int c)
+// {
+// 	static char	buffer[1024];
+// 	static char	*tmp = "\0\0";
+// 	char		*fin;
+// 	static int	i = 0;
+
+// 	fin = NULL;
+// 	buffer[1023] = '\0';
+// 	if (c == 0)
+// 	{
+// 		tmp = fin;
+// 		fin = ft_strjoin(tmp, buffer);
+// 		free(tmp);
+// 		ft_putstr_fd(fin, 1);
+// 		i = 0;
+// 		free(fin);
+// 		ft_memset(buffer, '\0', 1023);
+// 		return ;
+// 	}
+// 	if (i >= 1023)
+// 	{
+// 		tmp = fin;
+// 		fin = ft_strjoin(tmp, buffer);
+// 		free(tmp);
+// 		ft_memset(buffer, '\0', 1023);
+// 		i = 0;
+// 	}
+// 	buffer[i] = (char)c;
+// 	i++;
+// }
+
+char	*join_buf(char *buf, char *tmp, int c)
+{
+	char	*str;
+
+	if (c == 0)
+	{
+		
+	}
+}
+
 void	put_in_buf(int c)
 {
 	static char	buffer[1024];
-	static	int	i = 0;
+	static int	i = 0;
 
 	buffer[1023] = '\0';
 	if (c == 0)
@@ -24,6 +66,11 @@ void	put_in_buf(int c)
 		i = 0;
 		ft_memset(buffer, '\0', 1023);
 		return ;
+	}
+	if (i >= 1023)
+	{
+		ft_memset(buffer, '\0', 1023);
+		i = 0;
 	}
 	buffer[i] = (char)c;
 	i++;
@@ -53,10 +100,10 @@ void	to_ascii(char *str)
 	put_in_buf(c);
 }
 
-void	recup_sig(int	s)
+void	recup_sig(int s)
 {
-	static	char	str[8];
-	static	int		i = 0;
+	static char	str[8];
+	static int	i = 0;
 
 	if (s == SIGUSR1)
 		str[i] = '1';
@@ -70,21 +117,16 @@ void	recup_sig(int	s)
 	}
 }
 
-void	server(int pid)
+int	main(void)
 {
+	int	pid;
+
+	pid = getpid();
 	ft_putnbr_fd(pid, 1);
 	write(1, "\n", 1);
 	signal(SIGUSR1, recup_sig);
 	signal(SIGUSR2, recup_sig);
 	while (1)
 		pause();
-}
-
-int	main(void)
-{
-	int	pid;
-
-	pid = getpid();
-	server(pid);
 	return (0);
 }
