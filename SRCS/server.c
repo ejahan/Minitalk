@@ -12,45 +12,27 @@
 
 #include "../minitalk.h"
 
-// void	put_in_buf(int c)
-// {
-// 	static char	buffer[1024];
-// 	static char	*tmp = "\0\0";
-// 	char		*fin;
-// 	static int	i = 0;
-
-// 	fin = NULL;
-// 	buffer[1023] = '\0';
-// 	if (c == 0)
-// 	{
-// 		tmp = fin;
-// 		fin = ft_strjoin(tmp, buffer);
-// 		free(tmp);
-// 		ft_putstr_fd(fin, 1);
-// 		i = 0;
-// 		free(fin);
-// 		ft_memset(buffer, '\0', 1023);
-// 		return ;
-// 	}
-// 	if (i >= 1023)
-// 	{
-// 		tmp = fin;
-// 		fin = ft_strjoin(tmp, buffer);
-// 		free(tmp);
-// 		ft_memset(buffer, '\0', 1023);
-// 		i = 0;
-// 	}
-// 	buffer[i] = (char)c;
-// 	i++;
-// }
-
-char	*join_buf(char *buf, char *tmp, int c)
+void	join_buf(char *buffer, int c)
 {
-	char	*str;
+	char		*tmp;
+	static char	*fin = NULL;
 
+	if (fin == NULL)
+	{
+		fin = malloc(sizeof(char) * 1);
+		if (!(fin))
+			return ;
+		fin[0] = '\0';
+	}
+	tmp = fin;
+	fin = ft_strjoin(tmp, buffer);
+	free(tmp);
 	if (c == 0)
 	{
-		
+		ft_putstr_fd(fin, 1);
+		free(fin);
+		fin = NULL;
+		return ;
 	}
 }
 
@@ -62,14 +44,15 @@ void	put_in_buf(int c)
 	buffer[1023] = '\0';
 	if (c == 0)
 	{
-		ft_putstr_fd(buffer, 1);
-		i = 0;
+		join_buf(buffer, c);
 		ft_memset(buffer, '\0', 1023);
+		i = 0;
 		return ;
 	}
 	if (i >= 1023)
 	{
-		ft_memset(buffer, '\0', 1023);
+		join_buf(buffer, c);
+		ft_memset(buffer, '\0', 1024);
 		i = 0;
 	}
 	buffer[i] = (char)c;

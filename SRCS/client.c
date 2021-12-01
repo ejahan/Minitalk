@@ -65,12 +65,13 @@ int	main(int ac, char **av)
 	{
 		while (ft_isdigit(av[1][i]) == 1)
 			i++;
-		if (av[1][i] == '\0')
+		if (av[1][i] == '\0' && i > 0)
 			client(ft_atoi(av[1]), av[2]);
 		else
 			write(1, "error : wrong pid\n", 18);
 	}
 	else
 		write(1, "error : wrong number of arguments\n", 34);
+	system("leaks client");
 	return (0);
 }
